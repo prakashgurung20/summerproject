@@ -17,7 +17,7 @@
     <h1 class="project-title">Welcome to Hulk-Hulk fitness</h1>
     <div class="main-content">
         <div class="logo">
-            <img src="./img/logo.png" alt="">
+            <a href="./index.php"><img src="./img/logo.png" alt=""></a>
         </div>
         <div class="sign-in">
             <div class="container">
@@ -34,7 +34,7 @@
                             <input type="password" id="password" name="password" required>
                         </div>
                         <button type="submit" id="btn">Log in</button>
-                        <p>Not a registered user? <a href="signup.php">Sign Up</a></p>
+                        <!-- <p>Not a registered user? <a href="signup.php">Sign Up</a></p> -->
                     </form>
 
                     <!-- Social media icons -->

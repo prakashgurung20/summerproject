@@ -64,7 +64,7 @@ if (!$result) {
 						<a href="./admin-view-members.php">Members</a>
 					</li>
 					<li>
-						<a href="logout.php">Logout</a>
+						<a href="./logout.php">Logout</a>
 					</li>
 				</ul>
 			</nav>

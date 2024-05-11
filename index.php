@@ -218,11 +218,11 @@ require 'message.php';
 			<div class="container contact">
 				<div class="contactus">
 					<form id="contact-form" method="post" name="contact_form">
-						<h2 class="title">REGISTER NOW</h2>
+						<h2 class="title">Leave us your review!!</h2>
 						<div class="class-input"><input type="text" name="name" id="name" placeholder="Name" /></div>
 						<div class="class-input"><input type="email" name="email" id="email" placeholder="Email" /></div>
 						<div class="class-input"><input type="number" name="phone" id="phone" placeholder="Phone" /></div>
-						<div class="class-input"><input type="text" name="address" id="message" placeholder="Address" /></div>
+						<div class="class-input"><input type="text" name="message" id="message" placeholder="Message" /></div>
 						<input type="submit" value="Submit" id="btn" class="btn">
 					</form>
 				</div>

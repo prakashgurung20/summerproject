@@ -11,18 +11,18 @@ $user_data = check_login($con);
 ?>
 
 <?php
-require 'contact_connection.php';
-require 'message.php';
+require 'members_connection.php';
+require 'members.php';
 
 
-$query = "select * from feedbacks";
+// $query = "select * from members";
 
-$result = mysqli_query($contact_connection, $query);
+// $result = mysqli_query($contact_connection, $query);
 
-// Check for errors
-if (!$result) {
-	die("Query failed: " . mysqli_error($con));
-}
+// // Check for errors
+// if (!$result) {
+// 	die("Query failed: " . mysqli_error($con));
+// }
 ?>
 
 
@@ -64,7 +64,7 @@ if (!$result) {
 						<a href="./admin-view-members.php">Members</a>
 					</li>
 					<li>
-						<a href="logout.php">Logout</a>
+						<a href="./logout.php">Logout</a>
 					</li>
 				</ul>
 			</nav>
@@ -74,33 +74,23 @@ if (!$result) {
 	<main>
 		<section class="section-memberships" id="memberships">
 			<div class="container memberships">
-				<h2 class="title">Messages</h2>
+				<h2 class="title">Add Member</h2>
 				<div class="user-info">
-					<?php
-					// Loop through each row in the result set
-					while ($user_data = mysqli_fetch_assoc($result)) {
-					?>
-						<div class="user-card" data-aos="flip-left">
-							<div>
-								<h2 class="user-name">Name:</h2>
-								<p><?php echo $user_data['u_name']; ?></p>
-							</div>
-							<div>
-								<h2 class="user-email">Email:</h2>
-								<p><?php echo $user_data['u_email']; ?></p>
-							</div>
-							<div>
-								<h2 class="user-phone">Phone:</h2>
-								<p><?php echo $user_data['u_phone']; ?></p>
-							</div>
-							<div>
-								<h2 class="user-message">Message</h2>
-								<p><?php echo $user_data['u_message']; ?></p>
-							</div>
-						</div>
-					<?php
-					}
-					?>
+                <section class="section-contact" id="contact">
+			<div class="container contact">
+				<div class="contactus">
+					<form id="contact-form" method="post" name="contact_form">
+						<div class="class-input"><input type="text" name="name" id="name" placeholder="Name" /></div>
+						<div class="class-input"><input type="email" name="email" id="email" placeholder="Email" /></div>
+						<div class="class-input"><input type="number" name="phone" id="phone" placeholder="Phone" /></div>
+						<div class="class-input"><input type="text" name="address" id="address" placeholder="Address" /></div>
+						<p>Membership Date:</p><div class="class-input"><input type="date" name="join-date" id="join-date" placeholder="Joining Date" /></div>
+						<p>Membership Expiration Date:</p><div class="class-input"><input type="date" name="expire-date" id="expire-date" placeholder="Expiration Date" /></div>
+						<input type="submit" value="Submit" id="btn" class="btn">
+					</form>
+				</div>
+			</div>
+		</section>
 				</div>
 			</div>
 			</div>

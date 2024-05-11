@@ -6,23 +6,32 @@ require 'connection.php';
 require 'functions.php';
 
 
-$user_data = check_login($con);
+$row = check_login($con);
 
 ?>
 
 <?php
-require 'contact_connection.php';
-require 'message.php';
+require 'members_connection.php';
+require 'members.php';
 
 
-$query = "select * from feedbacks";
+$query = "select * from members";
 
-$result = mysqli_query($contact_connection, $query);
+$result = mysqli_query($members_connection, $query);
 
 // Check for errors
 if (!$result) {
 	die("Query failed: " . mysqli_error($con));
 }
+
+// Fetch all rows into an array
+$rows = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+}
+
+// Reverse the array
+$reversed_rows = array_reverse($rows);
 ?>
 
 
@@ -64,7 +73,7 @@ if (!$result) {
 						<a href="./admin-view-members.php">Members</a>
 					</li>
 					<li>
-						<a href="logout.php">Logout</a>
+						<a href="./logout.php">Logout</a>
 					</li>
 				</ul>
 			</nav>
@@ -74,28 +83,39 @@ if (!$result) {
 	<main>
 		<section class="section-memberships" id="memberships">
 			<div class="container memberships">
-				<h2 class="title">Messages</h2>
+				<div class="members-header">
+                    <h2 class="title">Members</h2>
+                    <a class="add-member-button" href="./admin-add-members.php">Add New Member</a>
+                </div>
 				<div class="user-info">
 					<?php
 					// Loop through each row in the result set
-					while ($user_data = mysqli_fetch_assoc($result)) {
+					foreach ($reversed_rows as $row) {
 					?>
 						<div class="user-card" data-aos="flip-left">
 							<div>
 								<h2 class="user-name">Name:</h2>
-								<p><?php echo $user_data['u_name']; ?></p>
+								<p><?php echo $row['u_name']; ?></p>
 							</div>
 							<div>
 								<h2 class="user-email">Email:</h2>
-								<p><?php echo $user_data['u_email']; ?></p>
+								<p><?php echo $row['u_email']; ?></p>
 							</div>
 							<div>
 								<h2 class="user-phone">Phone:</h2>
-								<p><?php echo $user_data['u_phone']; ?></p>
+								<p><?php echo $row['u_phone']; ?></p>
 							</div>
 							<div>
-								<h2 class="user-message">Message</h2>
-								<p><?php echo $user_data['u_message']; ?></p>
+								<h2 class="user-address">Address</h2>
+								<p><?php echo $row['u_address']; ?></p>
+							</div>
+							<div>
+								<h2 class="user-join-date">Join Date</h2>
+								<p><?php echo $row['u_join_date']; ?></p>
+							</div>
+							<div>
+								<h2 class="user-expire-date">Expire Date</h2>
+								<p><?php echo $row['u_expire_date']; ?></p>
 							</div>
 						</div>
 					<?php

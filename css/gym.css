@@ -461,8 +461,9 @@ body .section-memberships {
 }
 
 body .section-memberships .memberships {
-    padding: 3rem 3rem;
+    padding: 5rem 3rem 3rem 3rem;
     position: relative;
+    margin-top: 3rem;
 }
 
 body .section-memberships .memberships .title {
@@ -850,5 +851,33 @@ body .section-footer .copyrights div {
     100% {
         opacity: 1;
         transform: translate(0);
+    }
+}
+
+
+/* members page */
+
+.memberships {
+    .section-contact .contact {
+        display: block;
+    }
+}
+
+.members-header {
+    width: 70vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.4rem;
+
+    .add-member-button {
+        background-color: var(--color-green);
+        border: 2px solid var(--color-);
+        border-radius: 5px;
+        transition: all 0.2s;
+        color: #000;
+        cursor: pointer;
+        padding: 3px 10px;
+        margin-bottom: 40px;
     }
 }
