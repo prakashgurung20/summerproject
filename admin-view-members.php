@@ -73,6 +73,10 @@ $reversed_rows = array_reverse($rows);
 						<a href="./admin-view-members.php">Members</a>
 					</li>
 					<li>
+						<a href="./new-applicants.php">New applicants</a>
+					</li>
+					
+					<li>
 						<a href="./logout.php">Logout</a>
 					</li>
 				</ul>

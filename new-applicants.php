@@ -11,13 +11,13 @@ $user_data = check_login($con);
 ?>
 
 <?php
-require 'contact_connection.php';
-require 'message.php';
+require 'registration_connection.php';
+require 'apply_now.php';
 
 
-$query = "select * from feedbacks";
+$query = "select * from registration";
 
-$result = mysqli_query($contact_connection, $query);
+$result = mysqli_query($registration_connection, $query);
 
 // Check for errors
 if (!$result) {
@@ -72,7 +72,7 @@ $reversed_rows = array_reverse($rows);
 					<li>
 						<a href="./admin-view-members.php">Members</a>
 					</li>
-					<li>
+                    <li>
 						<a href="./new-applicants.php">New applicants</a>
 					</li>
 					
@@ -87,14 +87,14 @@ $reversed_rows = array_reverse($rows);
 	<main>
 		<section class="section-memberships" id="memberships">
 			<div class="container memberships">
-				<h2 class="title">Messages</h2>
+				<h2 class="title">New Applicants Form</h2>
 				<div class="user-info">
-				<?php
+                <?php
 					// Loop through each row in the result set
 					foreach ($reversed_rows as $row) {
 					?>
 						<div class="user-card" data-aos="flip-left">
-						<div>
+							<div>
 								<h2 class="user-name">Name:</h2>
 								<p><?php echo $row['u_name']; ?></p>
 							</div>
@@ -107,10 +107,31 @@ $reversed_rows = array_reverse($rows);
 								<p><?php echo $row['u_phone']; ?></p>
 							</div>
 							<div>
-								<h2 class="user-address">Message</h2>
-								<p><?php echo $row['u_message']; ?></p>
+								<h2 class="user-address">Address</h2>
+								<p><?php echo $row['u_address']; ?></p>
+							</div>
+							<div>
+								<h2 class="user-date-of-birth">Date of birth</h2>
+								<p><?php echo $row['u_date_of_birth']; ?></p>
+							</div>
+							<div>
+								<h2 class="user-sex">Sex</h2>
+								<p><?php echo $row['u_sex']; ?></p>
+							</div>
+							<div>
+								<h2 class="user-weight">Weight</h2>
+								<p><?php echo $row['u_weight']; ?></p>
+							</div>
+							<div>
+								<h2 class="user-height">Height</h2>
+								<p><?php echo $row['u_height']; ?></p>
+							</div>
+							<div>
+								<h2 class="user-emergency-contact">Emergency Contact</h2>
+								<p><?php echo $row['u_emergency_contact']; ?></p>
 							</div>
 						</div>
+
 					<?php
 					}
 					?>

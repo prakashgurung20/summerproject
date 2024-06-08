@@ -63,6 +63,7 @@ include("connection.php");
 include("functions.php");
 
 
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     //something was posted
     $user_email = $_POST['user_email'];

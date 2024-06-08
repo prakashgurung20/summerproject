@@ -11,27 +11,18 @@ $user_data = check_login($con);
 ?>
 
 <?php
-require 'contact_connection.php';
-require 'message.php';
+require 'members_connection.php';
+require 'members.php';
 
 
-$query = "select * from feedbacks";
+// $query = "select * from members";
 
-$result = mysqli_query($contact_connection, $query);
+// $result = mysqli_query($contact_connection, $query);
 
-// Check for errors
-if (!$result) {
-	die("Query failed: " . mysqli_error($con));
-}
-
-// Fetch all rows into an array
-$rows = [];
-while ($row = mysqli_fetch_assoc($result)) {
-    $rows[] = $row;
-}
-
-// Reverse the array
-$reversed_rows = array_reverse($rows);
+// // Check for errors
+// if (!$result) {
+// 	die("Query failed: " . mysqli_error($con));
+// }
 ?>
 
 
@@ -87,33 +78,23 @@ $reversed_rows = array_reverse($rows);
 	<main>
 		<section class="section-memberships" id="memberships">
 			<div class="container memberships">
-				<h2 class="title">Messages</h2>
+				<h2 class="title">Add Member</h2>
 				<div class="user-info">
-				<?php
-					// Loop through each row in the result set
-					foreach ($reversed_rows as $row) {
-					?>
-						<div class="user-card" data-aos="flip-left">
-						<div>
-								<h2 class="user-name">Name:</h2>
-								<p><?php echo $row['u_name']; ?></p>
-							</div>
-							<div>
-								<h2 class="user-email">Email:</h2>
-								<p><?php echo $row['u_email']; ?></p>
-							</div>
-							<div>
-								<h2 class="user-phone">Phone:</h2>
-								<p><?php echo $row['u_phone']; ?></p>
-							</div>
-							<div>
-								<h2 class="user-address">Message</h2>
-								<p><?php echo $row['u_message']; ?></p>
-							</div>
-						</div>
-					<?php
-					}
-					?>
+                <section class="section-contact" id="contact">
+			<div class="container contact">
+				<div class="contactus">
+                <form id="contact-form" method="post" name="contact_form">
+						<div class="class-input"><input type="text" name="name" id="name" placeholder="Name" /></div>
+						<div class="class-input"><input type="email" name="email" id="email" placeholder="Email" /></div>
+						<div class="class-input"><input type="number" name="phone" id="phone" placeholder="Phone" /></div>
+						<div class="class-input"><input type="text" name="address" id="address" placeholder="Address" /></div>
+						<p>Date of birth:</p><div class="class-input"><input type="text" name="date-of-birth" id="date-of-birth" placeholder="Date of birth" /></div>
+						<div class="class-input"><input type="text" name="experience" id="experience" placeholder="Experience" /></div>
+						<input type="submit" value="Send" id="btn" class="btn">
+					</form>
+				</div>
+			</div>
+		</section>
 				</div>
 			</div>
 			</div>

@@ -1,38 +1,41 @@
 <?php
-session_start();
+// session_start();
 
 
-require 'connection.php';
+// require 'connection.php';
 require 'functions.php';
 
 
-$user_data = check_login($con);
+// $row = check_login($con);
 
 ?>
 
 <?php
-require 'contact_connection.php';
-require 'message.php';
+require 'registration_connection.php';
+require 'apply_now.php';
 
+/*
+$query = "select * from registration";
 
-$query = "select * from feedbacks";
-
-$result = mysqli_query($contact_connection, $query);
+$result = mysqli_query($registration_connection, $query);
 
 // Check for errors
 if (!$result) {
 	die("Query failed: " . mysqli_error($con));
 }
 
+
 // Fetch all rows into an array
 $rows = [];
 while ($row = mysqli_fetch_assoc($result)) {
-    $rows[] = $row;
+	$rows[] = $row;
 }
 
 // Reverse the array
 $reversed_rows = array_reverse($rows);
+*/
 ?>
+
 
 
 <html>
@@ -64,21 +67,27 @@ $reversed_rows = array_reverse($rows);
 					<img src="./img/hlogo.png" alt="Logo" class="nav-icon" width="70" height="60" />
 					<div class="logo">Hulk-Bulk Fitness</div>
 				</div>
-				
+
 				<ul>
 					<li>
-						<a href="./admin-messages.php">View Messages</a>
+						<a href="./#aboutus">About</a>
 					</li>
 					<li>
-						<a href="./admin-view-members.php">Members</a>
+						<a href="./#memberships">Memberships</a>
 					</li>
 					<li>
-						<a href="./new-applicants.php">New applicants</a>
+						<a href="./#ourteam">Our Team</a>
+					</li>
+					<li>
+						<a href="./#contact">Contact Us</a>
+					</li>
+					<li>
+						<a href="./registration.php">Apply now</a>
+					</li>
+					<li>
+						<a href="login.php">Admin</a>
 					</li>
 					
-					<li>
-						<a href="./logout.php">Logout</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
@@ -87,33 +96,26 @@ $reversed_rows = array_reverse($rows);
 	<main>
 		<section class="section-memberships" id="memberships">
 			<div class="container memberships">
-				<h2 class="title">Messages</h2>
+				<h2 class="title">Register Now</h2>
 				<div class="user-info">
-				<?php
-					// Loop through each row in the result set
-					foreach ($reversed_rows as $row) {
-					?>
-						<div class="user-card" data-aos="flip-left">
-						<div>
-								<h2 class="user-name">Name:</h2>
-								<p><?php echo $row['u_name']; ?></p>
-							</div>
-							<div>
-								<h2 class="user-email">Email:</h2>
-								<p><?php echo $row['u_email']; ?></p>
-							</div>
-							<div>
-								<h2 class="user-phone">Phone:</h2>
-								<p><?php echo $row['u_phone']; ?></p>
-							</div>
-							<div>
-								<h2 class="user-address">Message</h2>
-								<p><?php echo $row['u_message']; ?></p>
-							</div>
-						</div>
-					<?php
-					}
-					?>
+                <section class="section-contact" id="contact">
+			<div class="container contact">
+				<div class="contactus">
+					<form id="contact-form" method="post" name="contact_form">
+						<div class="class-input"><input type="text" name="name" id="name" placeholder="Name" /></div>
+						<div class="class-input"><input type="email" name="email" id="email" placeholder="Email" /></div>
+						<div class="class-input"><input type="number" name="phone" id="phone" placeholder="Phone" /></div>
+						<div class="class-input"><input type="text" name="address" id="address" placeholder="Address" /></div>
+						<p>Date of birth:</p><div class="class-input"><input type="text" name="date-of-birth" id="date-of-birth" placeholder="Date of birth" /></div>
+						<div class="class-input"><input type="text" name="sex" id="sex" placeholder="Sex" /></div>
+						<div class="class-input"><input type="number" name="weight" id="weight" placeholder="weight" /></div>
+						<div class="class-input"><input type="number" name="height" id="height" placeholder="height" /></div>
+						<div class="class-input"><input type="text" name="emergency-contact" id="emergency-contact" placeholder="Emergency Contact" /></div>
+						<input type="submit" value="Send" id="btn" class="btn">
+					</form>
+				</div>
+			</div>
+		</section>
 				</div>
 			</div>
 			</div>
@@ -125,8 +127,8 @@ $reversed_rows = array_reverse($rows);
 			<div class="contact-details">
 				<h2>Hulk-Bulk Fitness</h2>
 				<div class="contact-company-address">
-				Aarubari,Bouddha,<br />
-				Kathmandu<br />Nepal
+					Aarubari,Bouddha,<br />
+					Kathmandu<br />Nepal
 				</div>
 				<div class="contact-social-links">
 					<img src="./assets/whatsapp.png" alt="navigation icon" class="nav-hamburger" width=35" height="35" /> <img src="./assets/facebook.png" alt="navigation icon" class="nav-hamburger" width=35" height="35" /> <img src="./assets/instagram.png" alt="navigation icon" class="nav-hamburger" width=35" height="35" /> <img src="./assets/twitter.png" alt="navigation icon" class="nav-hamburger" width=35" height="35" />

@@ -44,11 +44,15 @@ require 'message.php';
 						<a href="#ourteam">Our Team</a>
 					</li>
 					<li>
-						<a href="#contact">Join Us</a>
+						<a href="#contact">Contact Us</a>
+					</li>
+					<li>
+						<a href="./registration.php">Apply now</a>
 					</li>
 					<li>
 						<a href="login.php">Admin</a>
 					</li>
+					
 				</ul>
 			</nav>
 		</div>
@@ -81,9 +85,9 @@ require 'message.php';
 				</div>
 				<div class="section-aboutus-images">
 					<figure class="about-box__image">
-						<img src="https://vfitclub.netlify.app/image/about-image1.jpg" alt="navigation icon" class="nav-hamburger" width=320" height="190" style="--i: 0" data-aos="fade-down-right" />
-						<img src="https://vfitclub.netlify.app/image/about-image2.jpg" alt="navigation icon" class="nav-hamburger" width="320" height="190" style="--i: 1" data-aos="fade-down" />
-						<img src="https://vfitclub.netlify.app/image/about-image3.jpg" alt="navigation icon" class="nav-hamburger" width="320" height="190" style="--i: 2" data-aos="fade-down-left" />
+						<img src="./img/about-image1.jpg" alt="navigation icon" class="nav-hamburger" width=320" height="190" style="--i: 0" data-aos="fade-down-right" />
+						<img src="./img/about-image2.jpg" alt="navigation icon" class="nav-hamburger" width="320" height="190" style="--i: 1" data-aos="fade-down" />
+						<img src="./img/about-image.jpg" alt="navigation icon" class="nav-hamburger" width="320" height="190" style="--i: 2" data-aos="fade-down-left" />
 					</figure>
 				</div>
 			</div>
@@ -98,16 +102,16 @@ require 'message.php';
 						<img src="./img/team1.jpg" alt="Logo" class="member-logo" />
 						<div class="team-memmber-info">
 							<div class="member-name">Sujin Maharjan</div>
-							<div class="member-desg">Weight Lifting Coach</div>
-							<div class="member-desc">Specializes in sculpting strength and muscle with precision</div>
+							<div class="member-desg">Exercise biomechanics</div>
+							<div class="member-desc">7 years experience</div>
 						</div>
 					</div>
 					<div class="team-member">
-						<img src="./img/team2.jpg" alt="Logo" class="nav-icon" />
+						<img src="./img/prep coach.jpg" alt="Logo" class="nav-icon" />
 						<div class="team-memmber-info">
-							<div class="member-name">Prakash Gurung</div>
-							<div class="member-desg">MMA Coach</div>
-							<div class="member-desc">Hones combat skills and self-defense with expertise</div>
+							<div class="member-name">Bibek</div>
+							<div class="member-desg">prep Coach</div>
+							<div class="member-desc">5 years experience in bodybuilding</div>
 						</div>
 					</div>
 					<div class="team-member">
@@ -118,14 +122,15 @@ require 'message.php';
 							<div class="member-desc">Guides you to inner peace and flexibility through mindful yoga practice</div>
 						</div>
 					</div>
-					<div class="team-member">
+				<div class="team-member">
 						<img src="./img/trainer.jpg" alt="Logo" class="nav-icon" />
 						<div class="team-memmber-info">
 							<div class="member-name">Bikash Gorkhali</div>
 							<div class="member-desg">Personal Trainer</div>
-							<div class="member-desc">Your path to achieving fitness goals, one personalized session at a time</div>
+							<div class="member-desc">2 years experience one personalized session at a time</div>
 						</div>
 					</div>
+					
 				</div>
 			</div>
 		</section>
@@ -145,7 +150,7 @@ require 'message.php';
 								<li>Gym Tour & Training Instruction</li>
 							</ul>
 						</div>
-						<a>Get Started</a>
+						<a href="registration.php" class="get-started-button">Get Started</a>
 					</div>
 					<div class="class" data-aos="flip-up">
 						<h2 class="class-name">6 Months</h2>
@@ -160,7 +165,7 @@ require 'message.php';
 								<li>Gym Tour & Training Instruction</li>
 							</ul>
 						</div>
-						<a>Get Started</a>
+						<a href="registration.php" class="get-started-button">Get Started</a>
 					</div>
 					<div class="class" data-aos="flip-right">
 						<h2 class="class-name">1 Whole Year</h2>
@@ -175,7 +180,7 @@ require 'message.php';
 								<li>Gym Tour & Training Instruction</li>
 							</ul>
 						</div>
-						<a>Get Started</a>
+						<a href="registration.php" class="get-started-button">Get Started</a>
 					</div>
 				</div>
 			</div>
@@ -198,7 +203,7 @@ require 'message.php';
 						<div class="review-image" data-aos="image-rotateIn"><img src="./assets/review2.jpg" alt="Logo" class="review-icon" width="130" height="130" /></div>
 						<div class="review-details" data-aos="fade-down">
 							<div>Shreejan Pokharel</div>
-							<div>Prakash Sir, the MMA coach, is a true expert. He pushes you to your limits while ensuring safety. I've learned so much and gained newfound confidence</div>
+							<div>Bibek Sir, the prep coach, is a true expert. He pushes you to your limits while ensuring safety. I've learned so much and gained newfound confidence</div>
 						</div>
 					</div>
 					<div class="review-info">
@@ -218,7 +223,7 @@ require 'message.php';
 			<div class="container contact">
 				<div class="contactus">
 					<form id="contact-form" method="post" name="contact_form">
-						<h2 class="title">Leave us your review!!</h2>
+						<h2 class="title">Get In Touch</h2>
 						<div class="class-input"><input type="text" name="name" id="name" placeholder="Name" /></div>
 						<div class="class-input"><input type="email" name="email" id="email" placeholder="Email" /></div>
 						<div class="class-input"><input type="number" name="phone" id="phone" placeholder="Phone" /></div>
