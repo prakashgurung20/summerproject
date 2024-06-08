@@ -11,13 +11,13 @@ $user_data = check_login($con);
 ?>
 
 <?php
-require 'members_connection.php';
+require 'connection.php';
 require 'members.php';
 
 
 // $query = "select * from members";
 
-// $result = mysqli_query($contact_connection, $query);
+// $result = mysqli_query($con, $query);
 
 // // Check for errors
 // if (!$result) {

@@ -1,6 +1,6 @@
 <?php
 
-include("members_connection.php");
+include("connection.php");
 
 
 
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       
       else { 
       $query = "insert into members (u_name,u_email,u_phone,u_address,u_join_date,u_expire_date) values ('$name','$email','$phone','$address',' $join_date',' $expire_date')";
-      $is_success=mysqli_query($members_connection, $query);
+      $is_success=mysqli_query($con, $query);
 
       if ($is_success) {
          echo "<script>

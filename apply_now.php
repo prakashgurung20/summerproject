@@ -1,6 +1,6 @@
 <?php
 
-include("registration_connection.php");
+include("connection.php");
 
 
 
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die;
     } else {
         $query = "insert into registration (u_name,u_email,u_phone,u_address,u_date_of_birth,u_sex,u_weight,u_height,u_emergency_contact) values ('$name','$email','$phone','$address','$date_of_birth','$sex','$weight','$height','$emergency_contact')";
-        $is_success = mysqli_query($registration_connection, $query);
+        $is_success = mysqli_query($con, $query);
 
         if ($is_success) {
             echo "<script>

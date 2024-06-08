@@ -11,13 +11,13 @@ $row = check_login($con);
 ?>
 
 <?php
-require 'members_connection.php';
+require 'connection.php';
 require 'members.php';
 
 
 $query = "select * from members";
 
-$result = mysqli_query($members_connection, $query);
+$result = mysqli_query($con, $query);
 
 // Check for errors
 if (!$result) {
@@ -66,6 +66,9 @@ $reversed_rows = array_reverse($rows);
 				</div>
 				
 				<ul>
+				<li>
+						<a href="./admin-view-products.php">Products</a>
+					</li>
 					<li>
 						<a href="./admin-messages.php">View Messages</a>
 					</li>

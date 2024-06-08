@@ -1,5 +1,5 @@
 <?php
-require 'contact_connection.php';
+require 'connection.php';
 require 'message.php';
 ?>
 
@@ -39,6 +39,9 @@ require 'message.php';
 					</li>
 					<li>
 						<a href="#memberships">Memberships</a>
+					</li>
+					<li>
+						<a href="./shop.php">Shop</a>
 					</li>
 					<li>
 						<a href="#ourteam">Our Team</a>

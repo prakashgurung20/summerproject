@@ -11,13 +11,13 @@ $user_data = check_login($con);
 ?>
 
 <?php
-require 'registration_connection.php';
+require 'connection.php';
 require 'apply_now.php';
 
 
 $query = "select * from registration";
 
-$result = mysqli_query($registration_connection, $query);
+$result = mysqli_query($con, $query);
 
 // Check for errors
 if (!$result) {

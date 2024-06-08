@@ -1,6 +1,6 @@
 <?php
 
-include("contact_connection.php");
+include("connection.php");
 
 
 
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       
       else { 
       $query = "insert into feedbacks (u_name,u_email,u_phone,u_message) values ('$name','$email','$phone','$message')";
-      $is_success=mysqli_query($contact_connection, $query);
+      $is_success=mysqli_query($con, $query);
 
       if ($is_success) {
          echo "<script>

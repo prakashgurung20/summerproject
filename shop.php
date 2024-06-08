@@ -1,30 +1,26 @@
 <?php
-session_start();
-
-
 require 'connection.php';
-require 'functions.php';
+require 'products.php';
 
 
-$user_data = check_login($con);
+$query = "select * from products";
 
+$result = mysqli_query($con, $query);
+
+// Check for errors
+if (!$result) {
+	die("Query failed: " . mysqli_error($con));
+}
+
+// Fetch all rows into an array
+$rows = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+}
+
+// Reverse the array
+$reversed_rows = array_reverse($rows);
 ?>
-
-<?php
-require 'connection.php';
-require 'members.php';
-
-
-// $query = "select * from members";
-
-// $result = mysqli_query($con, $query);
-
-// // Check for errors
-// if (!$result) {
-// 	die("Query failed: " . mysqli_error($con));
-// }
-?>
-
 
 <html>
 
@@ -40,6 +36,10 @@ require 'members.php';
 	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="./css/styles.css" />
+	<link rel="stylesheet" href="./css/shop/bootstrap.css">
+	<link rel="stylesheet" href="./css/shop/font-awesome.min.css">
+	<link rel="stylesheet" href="./css/shop/responsive.css">
+	<link rel="stylesheet" href="./css/shop/style.css">
 	<link rel="stylesheet" href="./css/gym.css">
 
 
@@ -52,56 +52,83 @@ require 'members.php';
 		<div class="container">
 			<nav class="header-nav" aria-label="navigation">
 				<div class="logo-content">
-					<img src="./img/hlogo.png" alt="Logo" class="nav-icon" width="70" height="60" />
-					<div class="logo">Hulk-Bulk Fitness</div>
+					<img src="./img/hlogo.png" alt="Logo" class="nav-icon" width="60" height="60" />
+					<div class="logo">Hulk-BUlk Fitness</div>
 				</div>
 				
 				<ul>
-				<li>
-						<a href="./admin-view-products.php">Products</a>
+					<li>
+						<a href="#aboutus">About</a>
 					</li>
 					<li>
-						<a href="./admin-messages.php">View Messages</a>
+						<a href="#memberships">Memberships</a>
 					</li>
 					<li>
-						<a href="./admin-view-members.php">Members</a>
+						<a href="#ourteam">Our Team</a>
 					</li>
 					<li>
-						<a href="./new-applicants.php">New applicants</a>
+						<a href="#contact">Contact Us</a>
+					</li>
+					<li>
+						<a href="./registration.php">Apply now</a>
+					</li>
+					<li>
+						<a href="login.php">Admin</a>
 					</li>
 					
-					<li>
-						<a href="./logout.php">Logout</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
 	</header>
 
 	<main>
-		<section class="section-memberships" id="memberships">
-			<div class="container memberships">
-				<h2 class="title">Add Member</h2>
-				<div class="user-info">
-                <section class="section-contact" id="contact">
-			<div class="container contact">
-				<div class="contactus">
-					<form id="contact-form" method="post" name="contact_form">
-						<div class="class-input"><input type="text" name="name" id="name" placeholder="Name" /></div>
-						<div class="class-input"><input type="email" name="email" id="email" placeholder="Email" /></div>
-						<div class="class-input"><input type="number" name="phone" id="phone" placeholder="Phone" /></div>
-						<div class="class-input"><input type="text" name="address" id="address" placeholder="Address" /></div>
-						<p>Membership Date:</p><div class="class-input"><input type="date" name="join-date" id="join-date" placeholder="Joining Date" /></div>
-						<p>Membership Expiration Date:</p><div class="class-input"><input type="date" name="expire-date" id="expire-date" placeholder="Expiration Date" /></div>
-						<input type="submit" value="Submit" id="btn" class="btn">
-					</form>
-				</div>
-			</div>
-		</section>
-				</div>
-			</div>
-			</div>
-		</section>
+	<section class="product_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Our Products
+        </h2>
+      </div>
+      <div class="row">
+	  <?php
+					// Loop through each row in the result set
+					foreach ($reversed_rows as $row) {
+					?>
+        <div class="col-sm-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+			<img src="./uploads/<?php echo $row['product_image']; ?>" alt="<?php echo $row['product_name']; ?>">
+              <a href="" class="add_cart_btn">
+                <span>
+                  Add To Cart
+                </span>
+              </a>
+            </div>
+            <div class="detail-box">
+              <h5>
+			  <?php echo $row['product_name']; ?>
+              </h5>
+              <div class="product_info">
+                <h5>
+                  <span>Rs.</span> <?php echo $row['product_price']; ?>
+                </h5>
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+		<?php
+					}
+					?>
+      </div>
+    </div>
+  </section>
 	</main>
 
 	<footer class="section-footer" id="footer">
@@ -109,15 +136,15 @@ require 'members.php';
 			<div class="contact-details">
 				<h2>Hulk-Bulk Fitness</h2>
 				<div class="contact-company-address">
-				Aarubari,Bouddha,<br />
-				Kathmandu<br />Nepal
+					Aarubari,Bouddha<br />
+					Kathmandu<br />Nepal
 				</div>
 				<div class="contact-social-links">
 					<img src="./assets/whatsapp.png" alt="navigation icon" class="nav-hamburger" width=35" height="35" /> <img src="./assets/facebook.png" alt="navigation icon" class="nav-hamburger" width=35" height="35" /> <img src="./assets/instagram.png" alt="navigation icon" class="nav-hamburger" width=35" height="35" /> <img src="./assets/twitter.png" alt="navigation icon" class="nav-hamburger" width=35" height="35" />
 				</div>
 			</div>
 			<nav class="footer-nav" aria-label="navigation">
-				<p>Quick Links</p>
+				<h3>Quick Links</h3>
 				<ul>
 					<li>
 						<a href="#aboutus">About</a>
@@ -137,7 +164,7 @@ require 'members.php';
 				</ul>
 			</nav>
 			<div class="newsletter">
-				<p>News Letter</p>
+				<h3>News Letter</h3>
 				<input type="email" placeholder="email@domain.com" /><button>&#10003;</button>
 			</div>
 		</div>
@@ -150,7 +177,7 @@ require 'members.php';
 
 
 	<script src="./js/jquery-3.6.0.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js" defer></script>
 	<script src="./owlcarousel/dist/owl.carousel.min.js"></script>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 	<script src="./js/carousel.js"></script>
@@ -170,30 +197,5 @@ require 'members.php';
 
 </body>
 
-
-
 </html>
 
-
-<?php
-
-function successfulLogin()
-{
-	echo ("<script>
-  Swal.fire({
-    position: 'top-end',
-    icon: 'success',
-    title: 'Successfully Logged In',
-    showConfirmButton: false,
-    timer: 2000
-  })
-</script>");
-}
-
-
-if (isset($_SESSION['successMessage'])) {
-	echo $_SESSION['successMessage' . successfulLogin()];
-	unset($_SESSION['successMessage']);
-}
-
-?>

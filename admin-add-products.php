@@ -12,7 +12,7 @@ $user_data = check_login($con);
 
 <?php
 require 'connection.php';
-require 'members.php';
+require 'products.php';
 
 
 // $query = "select * from members";
@@ -57,7 +57,7 @@ require 'members.php';
 				</div>
 				
 				<ul>
-				<li>
+                <li>
 						<a href="./admin-view-products.php">Products</a>
 					</li>
 					<li>
@@ -81,18 +81,16 @@ require 'members.php';
 	<main>
 		<section class="section-memberships" id="memberships">
 			<div class="container memberships">
-				<h2 class="title">Add Member</h2>
+				<h2 class="title">Add Products</h2>
 				<div class="user-info">
                 <section class="section-contact" id="contact">
 			<div class="container contact">
 				<div class="contactus">
-					<form id="contact-form" method="post" name="contact_form">
+					<form id="contact-form" method="post" name="contact_form" enctype="multipart/form-data" >
+					Upload Product Image:<div class="class-input"><input type="file" name="product_image" id="product_image" /></div>
 						<div class="class-input"><input type="text" name="name" id="name" placeholder="Name" /></div>
-						<div class="class-input"><input type="email" name="email" id="email" placeholder="Email" /></div>
-						<div class="class-input"><input type="number" name="phone" id="phone" placeholder="Phone" /></div>
-						<div class="class-input"><input type="text" name="address" id="address" placeholder="Address" /></div>
-						<p>Membership Date:</p><div class="class-input"><input type="date" name="join-date" id="join-date" placeholder="Joining Date" /></div>
-						<p>Membership Expiration Date:</p><div class="class-input"><input type="date" name="expire-date" id="expire-date" placeholder="Expiration Date" /></div>
+						<div class="class-input"><input type="text" name="description" id="description" placeholder="Description" /></div>
+						<div class="class-input"><input type="number" name="price" id="price" placeholder="Price" /></div>
 						<input type="submit" value="Submit" id="btn" class="btn">
 					</form>
 				</div>

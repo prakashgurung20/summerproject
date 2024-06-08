@@ -11,13 +11,13 @@ $user_data = check_login($con);
 ?>
 
 <?php
-require 'contact_connection.php';
+require 'connection.php';
 require 'message.php';
 
 
 $query = "select * from feedbacks";
 
-$result = mysqli_query($contact_connection, $query);
+$result = mysqli_query($con, $query);
 
 // Check for errors
 if (!$result) {
@@ -57,6 +57,9 @@ if (!$result) {
 				</div>
 				
 				<ul>
+				<li>
+						<a href="./admin-view-products.php">Products</a>
+					</li>
 					<li>
 						<a href="./admin-messages.php">View Messages</a>
 					</li>

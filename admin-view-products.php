@@ -6,23 +6,32 @@ require 'connection.php';
 require 'functions.php';
 
 
-$user_data = check_login($con);
+$row = check_login($con);
 
 ?>
 
 <?php
 require 'connection.php';
-require 'members.php';
+require 'products.php';
 
 
-// $query = "select * from members";
+$query = "select * from products";
 
-// $result = mysqli_query($con, $query);
+$result = mysqli_query($con, $query);
 
-// // Check for errors
-// if (!$result) {
-// 	die("Query failed: " . mysqli_error($con));
-// }
+// Check for errors
+if (!$result) {
+	die("Query failed: " . mysqli_error($con));
+}
+
+// Fetch all rows into an array
+$rows = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+}
+
+// Reverse the array
+$reversed_rows = array_reverse($rows);
 ?>
 
 
@@ -57,9 +66,6 @@ require 'members.php';
 				</div>
 				
 				<ul>
-				<li>
-						<a href="./admin-view-products.php">Products</a>
-					</li>
 					<li>
 						<a href="./admin-messages.php">View Messages</a>
 					</li>
@@ -81,23 +87,32 @@ require 'members.php';
 	<main>
 		<section class="section-memberships" id="memberships">
 			<div class="container memberships">
-				<h2 class="title">Add Member</h2>
+				<div class="members-header">
+                    <h2 class="title">Products</h2>
+                    <a class="add-member-button" href="./admin-add-products.php">Add New Product</a>
+                </div>
 				<div class="user-info">
-                <section class="section-contact" id="contact">
-			<div class="container contact">
-				<div class="contactus">
-					<form id="contact-form" method="post" name="contact_form">
-						<div class="class-input"><input type="text" name="name" id="name" placeholder="Name" /></div>
-						<div class="class-input"><input type="email" name="email" id="email" placeholder="Email" /></div>
-						<div class="class-input"><input type="number" name="phone" id="phone" placeholder="Phone" /></div>
-						<div class="class-input"><input type="text" name="address" id="address" placeholder="Address" /></div>
-						<p>Membership Date:</p><div class="class-input"><input type="date" name="join-date" id="join-date" placeholder="Joining Date" /></div>
-						<p>Membership Expiration Date:</p><div class="class-input"><input type="date" name="expire-date" id="expire-date" placeholder="Expiration Date" /></div>
-						<input type="submit" value="Submit" id="btn" class="btn">
-					</form>
-				</div>
-			</div>
-		</section>
+					<?php
+					// Loop through each row in the result set
+					foreach ($reversed_rows as $row) {
+					?>
+						<div class="user-card" data-aos="flip-left">
+							<div>
+								<h2 class="user-name">Name:</h2>
+								<p><?php echo $row['product_name']; ?></p>
+							</div>
+							<div>
+								<h2 class="user-email">Description:</h2>
+								<p><?php echo $row['product_description']; ?></p>
+							</div>
+							<div>
+								<h2 class="user-phone">Price:</h2>
+								<p><?php echo $row['product_price']; ?></p>
+							</div>
+						</div>
+					<?php
+					}
+					?>
 				</div>
 			</div>
 			</div>
